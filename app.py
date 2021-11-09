@@ -9,7 +9,7 @@ from io import StringIO
 
 
 def get_data(filename):
-    token = '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' 
+    token = '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' 
     owner = 'nuel-emeka'
     repo = 'RECOMMENDER'
     path = 'Data/{}'.format(filename)
