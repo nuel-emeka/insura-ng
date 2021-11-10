@@ -8,7 +8,7 @@ from io import StringIO
 
 
 
-def get_data(filename):
+"""def get_data(filename):
     token = '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' 
     owner = 'nuel-emeka'
     repo = 'RECOMMENDER'
@@ -30,6 +30,17 @@ def get_data(filename):
     # Load data to df
     df = pd.read_csv(string_io_obj, sep=",", index_col=0)
     df = df.reset_index()
+    return df """
+
+def get_data_public(filename):
+    filename = filename.replace(' ', '%20')
+    owner = 'nuel-emeka'
+    repo = 'RECOMMENDER'
+    path = 'Data/{}'.format(filename)
+    # get link
+    r = 'https://raw.githubusercontent.com/{owner}/{repo}/main/{path}'.format(owner=owner, repo=repo, path=path)
+    # Load data to df
+    df = pd.read_csv(r)
     return df
 
 def get_ready(data):
@@ -49,9 +60,9 @@ def yesNo_encode(value):
         return value
 
 #getting all data ready...
-data = get_data('Clean_data.csv')
+data = get_data_public('Clean_data.csv')
 data_copy = data.copy()
-rating_data = get_data("HMO ratings - Form responses 1.csv")
+rating_data = get_data_public("HMO ratings - Form responses 1.csv")
 df = get_ready(data)
 
 def cosine_sim(response, data):
