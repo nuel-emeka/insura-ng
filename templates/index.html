@@ -7,15 +7,13 @@
     <meta name="keywords" content="HMOs">
     <meta name="author" content="INSURA">
     <title>INSURA | Recommender</title>
+    <link rel="icon" href="../static/logo.jpeg">
    
 </head>
 <body >
     <style> body{
-        color: rgb(15, 241, 34);
-        background-image: url("{{ url_for('static', filename='background.jpg') }}");
-        background-repeat: no-repeat;
-        background-attachment: fixed; 
-        background-size: 100% 100%;
+        color: black;
+        background-color: aqua;
         }
         </style> 
     <header>
@@ -26,10 +24,15 @@
                     color: blue;
                     font-size: 100px;
                 }</style>
-                <h2 style="text-align: center;">Let us help you recommend a HMO</h2>
+                <h2 style="text-align: center;">Let's help you find the best HMO for you</h2>
                 <style>h2{
                     color: rgba(11, 11, 201, 0.596);
                     font-size: 50px;
+                }</style>
+                <h3>Use the options below to state what you need</h3>
+                <style>h3{
+                    color: rgba(7, 7, 88, 0.596);
+                    font-size: 25px;
                 }</style>
             </div>
         </div>
@@ -43,13 +46,13 @@
             }
             </style>
         <form action="./predict" method="POST">
-            <label for="TIERS">TIER:</label>
+            <label for="TIERS">PAYABLE ANNUAL FEE FOR INSURANCE:</label>
             <select name="TIERS" id="TIERS">
                 <option value="SELECT AN OPTION">SELECT AN OPTION</option>
-                <option value="TIER 1">TIER 1</option>
-                <option value="TIER 2">TIER 2</option>
-                <option value="TIER 3">TIER 3</option>
-                <option value="TIER 4">TIER 4</option>
+                <option value="TIER 1">TIER 1: 10k - 29.9k</option>
+                <option value="TIER 2">TIER 2: 30k - 59.9k</option>
+                <option value="TIER 3">TIER 3: 60k - 99.9k</option>
+                <option value="TIER 4">TIER 4: 100k and above</option>
                 </select>
 
             <br><br>
