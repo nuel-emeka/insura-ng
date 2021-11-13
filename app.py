@@ -200,7 +200,7 @@ def predict():
     if len(user_data)<12 :
         return render_template('index.html', prediction_text=Markup('KINDLY ANSWER ALL QUESTIONS<br>THANK'))
     else:
-        return render_template('index.html', prediction_text=user_data)
+        return render_template('index.html', prediction_text=recommend(user_data, df))
 
 if __name__=='__main__':
     app.run(debug=True)
