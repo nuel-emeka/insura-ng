@@ -176,6 +176,7 @@ def user_ready(data):
 
     return test
 
+
 #print_top_3(top_3_index(top_5))
 app = Flask(__name__)
 
@@ -192,11 +193,14 @@ def predict():
         'green': '28fc03',
         'red': 'fc1703', 
         'purple': 'b503fc'}
-
     user = [value for value in request.form.values()]
+    if 'SELECT AN OPTION' in user:
+        return render_template('index.html', prediction_text=Markup('KINDLY ANSWER ALL QUESTIONS<br>THANK'))
     user_data = user_ready(user)
-
-    return render_template('index.html', prediction_text=recommend(user_data, df))
+    if len(user_data)<12 :
+        return render_template('index.html', prediction_text=Markup('KINDLY ANSWER ALL QUESTIONS<br>THANK'))
+    else:
+        return render_template('index.html', prediction_text=user_data)
 
 if __name__=='__main__':
     app.run(debug=True)
